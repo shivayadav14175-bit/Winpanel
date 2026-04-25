@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Win03</title>
+
+<style>
+body { font-family: Arial; text-align:center; background:white; }
+
+h1 { color:red; }
+
+.login, .dashboard, .success {
+    margin-top:80px;
+}
+
+input {
+    padding:10px;
+    margin:8px;
+    width:80%;
+    border:2px solid red;
+    border-radius:8px;
+}
+
+button {
+    padding:12px 20px;
+    margin:8px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:16px;
+}
+
+.loginBtn { background:red; }
+.payBtn { background:#5f259f; }
+.telegram { background:#0088cc; }
+.confirmBtn { background:green; }
+
+.dashboard, .success { display:none; }
+
+.box {
+    border:2px solid red;
+    padding:20px;
+    margin:20px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div class="login">
+<h1>Win03 Login</h1>
+<input type="text" id="phone" placeholder="Phone Number"><br>
+<input type="password" id="pass" placeholder="Password"><br>
+<button class="loginBtn" onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dash">
+<h1>Welcome to Win03</h1>
+
+<div class="box">
+<h2>💧 win03 admin panel</h2>
+<p>🔥 Offer Price ₹899</p>
+
+<button class="payBtn" onclick="pay()">Pay with PhonePe / UPI</button>
+
+<p style="color:red;">
+👉 Payment karne ke baad screenshot Telegram par bheje  
+👉 After payment send screenshot to Admin
+</p>
+
+<button class="confirmBtn" onclick="confirm()">I Have Paid</button>
+</div>
+
+<button class="telegram" onclick="tg()">📞 Admin Support (Telegram)</button>
+
+</div>
+
+<!-- SUCCESS -->
+<div class="success" id="success">
+<h1>✅ Order Confirmed</h1>
+<p>Your order is under verification</p>
+
+<p style="color:red;">
+👉 Screenshot Telegram par bhejna na bhule  
+👉 Don't forget to send screenshot on Telegram
+</p>
+
+<button class="telegram" onclick="tg()">Go to Admin</button>
+</div>
+
+<script>
+function login(){
+let p=document.getElementById("phone").value;
+let pa=document.getElementById("pass").value;
+
+if(p && pa){
+document.querySelector(".login").style.display="none";
+document.getElementById("dash").style.display="block";
+}else{
+alert("Enter details");
+}
+}
+
+function pay(){
+window.location.href="upi://pay?pa=9955688659@nyes&pn=Sunil Kumar&am=899&cu=INR";
+}
+
+function confirm(){
+document.getElementById("dash").style.display="none";
+document.getElementById("success").style.display="block";
+}
+
+function tg(){
+window.open("https://t.me/win033panel");
+}
+</script>
+
+</body>
+</html>
